@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Anti-woke</string>
+    <string name="title_woke">Woke</string>
+    <string name="title_not_woke">Not Woke</string>
+    <string name="title_dashboard">Info</string>
+    <string name="what_is_woke">Wokeness is a fixation on class, gender, and race and the perceived oppression between those identities</string>
+    <string name="suggestion_string">See something wrong or have a company that should be added or removed?\nSend an email (with sources) to:\nanti-wokeness@protonmail.com</string>
+    <string name="other_availability_text">Available as a </string>
+    <string name="support_project">Support the project: </string>
+    <string name="updating_list">Updating list..</string>
+</resources>
