@@ -13,17 +13,7 @@
         android:textColorLink="@android:color/holo_orange_dark"
         android:textColor="@color/colorGray"
         android:paddingStart="?android:attr/expandableListPreferredChildPaddingLeft"
-        />
-
-    <TextView
-        android:id="@+id/listItemSources"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColorLink="@android:color/holo_orange_dark"
-        android:textColor="@color/colorGray"
-        android:paddingStart="?android:attr/expandableListPreferredChildPaddingLeft"
-        android:paddingTop="2dp"
+        android:paddingEnd="10dp"
         />
 
     <TextView
@@ -31,9 +21,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textColorLink="@android:color/holo_orange_dark"
+        android:textColorLink="@android:color/holo_blue_dark"
         android:textColor="@color/colorGray"
+        android:visibility="gone"
         android:paddingStart="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingEnd="10dp"
+        />
+
+    <TextView
+        android:id="@+id/listItemVisitUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColorLink="@android:color/holo_blue_dark"
+        android:textColor="@color/colorGray"
+        android:visibility="gone"
+        android:paddingStart="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingEnd="10dp"
         />
 
 </LinearLayout>

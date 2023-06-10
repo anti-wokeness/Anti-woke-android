@@ -20,4 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keepclassmembers enum no.freedom.anti_woke.** { *; }
+-keepclassmembers class no.freedom.anti_woke.ui.JsonData { *; }
+-keepclassmembers class no.freedom.anti_woke.ui.Item { *; }

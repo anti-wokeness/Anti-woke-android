@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun
 import androidx.core.text.HtmlCompat
 import kotlinx.android.synthetic.main.fragment_woke.*
 import no.freedom.anti_woke.R
@@ -66,21 +67,32 @@ internal constructor(
         }
 
         val expandedListTextView = localConvertView!!.findViewById<TextView>(R.id.listItemText)
-        expandedListTextView.text = HtmlCompat.fromHtml(expandedListText.text ?: "", HtmlCompat.FROM_HTML_MODE_LEGACY)
+        var text = expandedListText.text ?: ""
+        if(!expandedListText.sources.isNullOrEmpty())
+            text += " " + getSourceText(expandedListText.sources!!)
+
+        expandedListTextView.text = HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
         expandedListTextView.movementMethod = LinkMovementMethod.getInstance()
 
-        if(!expandedListText.sources.isNullOrEmpty()) {
-            val expandedListSourcesView = localConvertView.findViewById<TextView>(R.id.listItemSources)
-            expandedListSourcesView.text = HtmlCompat.fromHtml(getSourceText(expandedListText.sources!!), HtmlCompat.FROM_HTML_MODE_LEGACY)
-            expandedListSourcesView.movementMethod = LinkMovementMethod.getInstance()
-        }
-
+        val alternativesView = localConvertView.findViewById<TextView>(R.id.listItemAlternative)
         if(!expandedListText.linkText.isNullOrEmpty())
         {
-            val alternativesView = localConvertView.findViewById<TextView>(R.id.listItemAlternative)
+            alternativesView.visibility = View.VISIBLE
             alternativesView.text = HtmlCompat.fromHtml("An alternative to " + expandedListText.name + " is <a href='" + expandedListText.linkUrl + "'>" + expandedListText.linkText + "</a>", HtmlCompat.FROM_HTML_MODE_LEGACY)
             alternativesView.movementMethod = LinkMovementMethod.getInstance()
         }
+        else
+            alternativesView.visibility = View.GONE
+
+        val visitView = localConvertView.findViewById<TextView>(R.id.listItemVisitUrl)
+        if(!expandedListText.visitUrl.isNullOrEmpty())
+        {
+            visitView.visibility = View.VISIBLE
+            visitView.text = HtmlCompat.fromHtml("Visit <a href='" + expandedListText.visitUrl + "'>" + expandedListText.name + "</a>", HtmlCompat.FROM_HTML_MODE_LEGACY)
+            visitView.movementMethod = LinkMovementMethod.getInstance()
+        }
+        else
+            visitView.visibility = View.GONE
 
         return localConvertView
     }

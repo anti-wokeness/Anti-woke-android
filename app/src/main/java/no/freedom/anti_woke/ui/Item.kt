@@ -9,6 +9,7 @@ class Item(
     var name: String = ""
     var text: String? = ""
     var sources: String? = ""
+    var visitUrl: String? = ""
     var linkUrl: String? = ""
     var linkText: String? = ""
     var childText: String? = ""

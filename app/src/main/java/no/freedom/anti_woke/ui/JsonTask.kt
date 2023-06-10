@@ -99,7 +99,7 @@ class JsonTask(context: Fragment, storage: String, synch: String) : CoroutineSco
             activity.storage.set(storageSynchString, activity.getTodayFormatted())
             activity.updateViewData(jsonData)
         }
-        catch (e: Exception){}
+        catch (e: Exception) { }
     }
 
     private fun flatten(urlsToWarn: JsonData) : JsonData {
@@ -113,13 +113,13 @@ class JsonTask(context: Fragment, storage: String, synch: String) : CoroutineSco
         {
             if(item.text.isNullOrEmpty()) {
                 when {
-                    wokeText.isNotEmpty() -> item.text = item.name + wokeText
-                    notWokeText.isNotEmpty() -> item.text = item.name + notWokeText
+                    !wokeText.isNullOrEmpty() -> item.text = item.name + wokeText
+                    !notWokeText.isNullOrEmpty() -> item.text = item.name + notWokeText
                     else -> item.text = ""
                 }
             }
             else if(item.text == "{wokeRacist}")
-                item.text = wokeRacistText
+                item.text = item.name + wokeRacistText
 
             flattened.add(item)
 
@@ -136,6 +136,9 @@ class JsonTask(context: Fragment, storage: String, synch: String) : CoroutineSco
             {
                 if(itemChild.sources.isNullOrEmpty())
                     itemChild.sources = item.sources
+
+                if(itemChild.visitUrl.isNullOrEmpty())
+                    itemChild.visitUrl = item.visitUrl
 
                 if(itemChild.text.isNullOrEmpty())
                 {
